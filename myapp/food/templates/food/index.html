@@ -1,0 +1,36 @@
+{% extends 'food/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+<body>
+    {% block body %}
+    <h1 class="text-center p-3">Create Your Food Bucket List!</h1>
+    {% for item in item_list %}
+        <div class="row">
+            <div class="col-md-3 offset-md-2 mt-1 mb-1">
+                <img class="img-thumbnail" src="{{ item.item_image }}" width="250px" height="250px">
+            </div>
+            <div class="col-md-4 mt-5">
+                <ul>
+                    <li class="fs-3">
+                        {{ item.item_name }}
+                    </li>
+                    <li class="fs-5">
+                        {{ item.item_desc }}
+                    </li>
+                    <li class="fs-6">
+                        ${{ item.item_price }}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2 p-2 mt-5">
+                <a href="{% url 'food:details' item.id %}" class="btn btn-dark">Details</a>
+            </div>
+        </div>
+    {% endfor %}
+    {% endblock %}
+</body>
+</html>
